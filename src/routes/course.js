@@ -1,8 +1,14 @@
 const express = require('express')
-const {getAllCourses, getCourseById, updateCourseById, deleteCourseById, addCourse} = require('../controllers/course');
+const {
+    getAllCourses,
+    getCourseById,
+    updateCourseById,
+    deleteCourseById,
+    addCourse} = require('../controllers/course');
 
 
 const courseRouter = express.Router();
+
 courseRouter.get('', getAllCourses);
 courseRouter.get('/:id', getCourseById);
 courseRouter.put('/:id', updateCourseById);
