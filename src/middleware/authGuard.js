@@ -5,6 +5,7 @@ module.exports = (req, res, next) => {
     // 从header取authorization；
     const authorizationHeader = req.header('Authorization');
     if (!authorizationHeader) {
+        return res.sendStatus(401);
     }
     // 检查authorization里面的第0个是不是Bearer，以及值是不是正确的token
     const tokenArray = authorizationHeader.split(' ');
@@ -16,5 +17,6 @@ module.exports = (req, res, next) => {
     if (!payload) {
         return res.sendStatus(401);
     }
+    req.user = payload;
     return next();
 }
