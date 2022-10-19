@@ -11,7 +11,9 @@ const Token = generateToken({id: 'fake_id'});
 const request = supertest(app);
 
 const createStudentRequest = async (body) => {
-    return request.post('v1/students').send(body).set('Authorization', `Bearer ${Token}`);
+    return request.post('/v1/students/')
+        .send(body)
+        .set('Authorization', `Bearer ${Token}`);
 }
 
 //每个测试都需要链接数据库，所以在开始的时候 连接数据库；测试结束的时候，断开链接
